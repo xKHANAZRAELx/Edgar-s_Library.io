@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Messages</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+
+        li strong {
+            font-weight: bold;
+        }
+
+        @media only screen and (max-width: 600px) {
+            li {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Admin Messages</h1>
+        <ul>
+            {% for message in messages %}
+            <li>
+                <strong>Name:</strong> {{ message.name }}<br>
+                <strong>Email:</strong> {{ message.email }}<br>
+                <strong>Message:</strong> {{ message.message }}
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>

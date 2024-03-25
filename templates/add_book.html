@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Book</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" rel="stylesheet">
+
+    <style>
+        .book {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 20px;
+            width: 300px; /* Adjust width as needed */
+            display: inline-block;
+            vertical-align: top;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+        .book img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+        .book h3 {
+            margin: 0;
+            font-size: 18px;
+        }
+        .book p {
+            margin: 5px 0;
+        }
+    </style>
+    
+
+</head>
+<body>
+
+      
+      
+<!-- NAVBAR STARTS -->
+<nav class="navbar navbar-expand-lg sticky-top navbar-dark p-1" style="background-color: #b8cfc8;" id="headerNav">
+    <div class="container-fluid">
+        <a class="navbar-brand d-block d-lg-none" href="/">
+            <img src="/static/images/logo.png" height="80"/>
+        </a>
+        <button class="navbar-toggler" type="button" style="color: #27334b; font-size: 0.5 rem; border: 2px solid #27334b; border-radius: 5px;margin-right: 10px;" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class=" collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav mx-auto ">
+                <li class="nav-item d-none d-lg-block">
+                    <a class="nav-link mx-2" href="/" style="color: #27334b;font-size: x-large;margin-top: 6px;font-family: 'Times New Roman', Times, serif;letter-spacing: 3px;"> 
+                        <img src="/static/images/edgar logo.png" height="80" width="90"> EDGAR LIBRARY
+                    </a>
+                </li>
+                <!-- Messages Icon -->
+                <li class="nav-item">
+                    <a class="nav-link" href="/admin/messages" style="color: #27334b;margin-top: 24px;font-family: 'Times New Roman', Times, serif;letter-spacing: 3px;font-size: x-large">
+                        <i class="bi bi-envelope-fill" style="font-size: 1.5rem;"></i> <!-- Change the icon class as per your preference -->
+                        <span class="visually-hidden">Messages</span> <!-- For screen readers -->
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<!-- NAVBAR ENDS -->
+
+ 
+
+    <div class="container mt-5">
+        <h1 class="mb-4">Add Book</h1>
+        <form method="post" enctype="multipart/form-data" onsubmit="return validateForm()">
+            <div class="form-group">
+                <label for="title">Title</label>
+                <input type="text" class="form-control" id="title" name="title" required>
+            </div>
+            <div class="form-group">
+                <label for="author">Author</label>
+                <input type="text" class="form-control" id="author" name="author" required>
+            </div>
+            <div class="form-group">
+                <label for="price">Price (in EUR)</label>
+                <input type="number" class="form-control" id="price" name="price" required>
+            </div>
+            <div class="form-group">
+                <label for="image">Image</label>
+                <input type="file" class="form-control-file" id="image" name="image" required>
+            </div>
+            <div class="form-group">
+                <label for="category">Category</label>
+                <select class="form-control" id="category" name="category">
+                    <option value="fiction">Fiction</option>
+                    <option value="nonfiction">Non-fiction</option>
+                    <option value="childrens">Childrens</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+
+{% for book_id, book in books.items() %}
+<div class="book">
+    <img src="{{ book.image_url }}" alt="{{ book.title }}">
+    <h3>{{ book.title }}</h3>
+    <p><strong>Author:</strong> {{ book.author }}</p>
+    <p><strong>Price:</strong> {{ book.price }}</p>
+    <p><strong>Category:</strong> {{ book.category }}</p>
+    <!-- Remove button -->
+    <form method="post" action="{{ url_for('remove_book', book_id=book_id) }}">
+        <button type="submit" class="btn btn-danger btn-sm">Remove</button>
+    </form>
+</div>
+{% endfor %}
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script>
+    function validateForm() {
+        // Retrieve form inputs
+        var title = document.getElementById("title").value;
+        var author = document.getElementById("author").value;
+        var price = document.getElementById("price").value;
+
+        // Perform validation
+        if (title.trim() === "") {
+            alert("Please enter a title.");
+            return false;
+        }
+        if (author.trim() === "") {
+            alert("Please enter an author.");
+            return false;
+        }
+        if (isNaN(price) || price <= 0) {
+            alert("Please enter a valid price.");
+            return false;
+        }
+
+        return true;
+    }
+</script>
+</body>
+</html>
