@@ -76,7 +76,7 @@ def add_book():
 
 @app.route("/fiction")
 def fiction():
-    fiction_books = db.child("books").order_by_child("category").equal_to("fiction").get().val() or {}
+    fiction_books = db.child("books").order_by_child("category").equal_to("fiction").get().each() or {}
     return render_template('fiction.html', books=fiction_books)
 
 @app.route("/nonfiction")
