@@ -240,5 +240,5 @@ def admin_messages():
     return render_template('admin_messages.html', messages=messages)
 
 
-if __name__ == "__main__":
-    app.run(debug=True)
+if name == 'main':
+    app.run( debug=True, host='0.0.0.0', port=5000)
