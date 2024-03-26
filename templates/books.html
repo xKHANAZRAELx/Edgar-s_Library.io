@@ -77,6 +77,65 @@
               background-color: #0056b3;
             }
             
+            .footer {
+    background: #27334b;
+    padding: 30px 0px;
+    font-family: 'Play', sans-serif;
+    text-align: center;
+}
+
+.footer .row {
+    width: 100%;
+    margin: 1% 0%;
+    padding: 0.6% 0%;
+    color: gray;
+    font-size: 0.8em;
+}
+
+.footer .row a {
+    text-decoration: none;
+    color: gray;
+    transition: 0.5s;
+}
+
+.footer .row a:hover {
+    color: #fff;
+}
+
+.footer .row ul {
+    width: 100%;
+}
+
+.footer .row ul li {
+    display: inline-block;
+    margin: 0px 30px;
+}
+
+.footer .row a i {
+    font-size: 2em;
+    margin: 0% 1%;
+}
+
+@media (max-width:720px) {
+    .footer {
+        text-align: left;
+        padding: 5%;
+    }
+
+    .footer .row ul li {
+        display: block;
+        margin: 10px 0px;
+        text-align: left;
+    }
+
+    .footer .row a i {
+        margin: 0% 3%;
+    }
+}
+
+.footer .copyright {
+    text-align: center;
+}
                     </style>
 </head>
 <body>
@@ -159,7 +218,27 @@
     </div>
   </div>
   
-
+  <footer>
+    <div class="footer">
+        
+        <div class="row">
+            <ul>
+                <li><a href="/books" style="color: #b8cfc8;font-size: x-large;font-family: 'Times New Roman', Times, serif;letter-spacing: 3px;">All Books</a></li>
+                <li><a href="/fiction" style="color: #b8cfc8;font-size: x-large;font-family: 'Times New Roman', Times, serif;letter-spacing: 3px;">Fiction</a></li>
+                <li><a href="/nonfiction" style="color: #b8cfc8;font-size: x-large;font-family: 'Times New Roman', Times, serif;letter-spacing: 3px;">Non-fiction</a></li>
+                <li><a href="/childrens" style="color: #b8cfc8;font-size: x-large;font-family: 'Times New Roman', Times, serif;letter-spacing: 3px;">Children's</a></li>
+                <li><a href="/contact" style="color: #b8cfc8;font-size: x-large;font-family: 'Times New Roman', Times, serif;letter-spacing: 3px;">Contact Us</a></li>
+            </ul>
+        </div>
+  
+        <div class="row">
+          <ul>
+              <li><a href="/" style="color: #b8cfc8;font-size: x-large;font-family: 'Times New Roman', Times, serif;letter-spacing: 3px;">EDGAR Copyright © 2024 Edgar's Library - All rights reserved || Designed By: Amir Ashfaque Ahmed Khan</a></li>
+          </ul>
+      </div>
+        
+    </div>
+  </footer>
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>

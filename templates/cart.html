@@ -108,17 +108,122 @@
                 width: 100%;
             }
         }
+        .footer {
+    background: #27334b;
+    padding: 30px 0px;
+    font-family: 'Play', sans-serif;
+    text-align: center;
+}
+
+.footer .row {
+    width: 100%;
+    margin: 1% 0%;
+    padding: 0.6% 0%;
+    color: gray;
+    font-size: 0.8em;
+}
+
+.footer .row a {
+    text-decoration: none;
+    color: gray;
+    transition: 0.5s;
+}
+
+.footer .row a:hover {
+    color: #fff;
+}
+
+.footer .row ul {
+    width: 100%;
+}
+
+.footer .row ul li {
+    display: inline-block;
+    margin: 0px 30px;
+}
+
+.footer .row a i {
+    font-size: 2em;
+    margin: 0% 1%;
+}
+
+@media (max-width:720px) {
+    .footer {
+        text-align: left;
+        padding: 5%;
+    }
+
+    .footer .row ul li {
+        display: block;
+        margin: 10px 0px;
+        text-align: left;
+    }
+
+    .footer .row a i {
+        margin: 0% 3%;
+    }
+}
+
+.footer .copyright {
+    text-align: center;
+}
     </style>
 </head>
 <body>
-    
+    <!-- NAVBAR STARTS -->
+<nav class="navbar navbar-expand-lg sticky-top navbar-dark p-1" style="background-color: #b8cfc8;" id="headerNav">
+    <div class="container-fluid">
+        <a class="navbar-brand d-block d-lg-none" href="/">
+            <img src="/static/images/logo.png" height="80"/>
+        </a>
+        <button class="navbar-toggler" type="button" style="color: #27334b; font-size: 0.5 rem; border: 2px solid #27334b; border-radius: 5px;margin-right: 10px;" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav mx-auto">
+                <li class="nav-item d-none d-lg-block">
+                    <a class="nav-link mx-2" href="/" style="color: #27334b;font-size: x-large;margin-top: 6px;font-family: 'Times New Roman', Times, serif;letter-spacing: 3px;"> 
+                        <img src="/static/images/edgar logo.png" height="80" width="90"> EDGAR LIBRARY
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <br>
+                    <a class="nav-link mx-2 active" href="/books" style="color: #27334b;font-size: x-large;font-family: 'Times New Roman', Times, serif;letter-spacing: 3px;">All Books</a>
+                </li>
+                <li class="nav-item">
+                    <br>
+                    <a class="nav-link mx-2 active" href="/fiction" style="color: #27334b;font-size: x-large;font-family: 'Times New Roman', Times, serif;letter-spacing: 3px;">Fiction</a>
+                </li>
+                <li class="nav-item">
+                    <br>
+                    <a class="nav-link mx-2 active" href="/nonfiction" style="color: #27334b;font-size: x-large;font-family: 'Times New Roman', Times, serif;letter-spacing: 3px;">Non-fiction</a>
+                </li>
+                <li class="nav-item">
+                    <br>
+                    <a class="nav-link mx-2 active" href="/childrens" style="color: #27334b;font-size: x-large;font-family: 'Times New Roman', Times, serif;letter-spacing: 3px;">Children's</a>
+                </li>
+                <li class="nav-item" style="margin-top: 32px;">
+                  <form class="form-inline my-3 my-lg-0" method="GET" action="{{ url_for('search') }}">
+                      <input class="form-control mr-sm-2" type="search" placeholder="Search any Book Or Author" aria-label="Search" name="searchInput">
+                      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                  </form>
+              </li>
+              
+                <li class="nav-item" style="margin-top: 22px;">
+                    <a href="/cart" class="nav-link mx-2 active" style="color: #27334b;font-size: x-large;font-family: 'Times New Roman', Times, serif;letter-spacing: 3px;">
+                        <i class="fas fa-shopping-cart"></i> Cart <span id="cart-count" class="badge badge-primary">{{ session.cart|length }}</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<!-- NAVBAR ENDS -->
     <h1>Your Cart</h1>
     <form action="{{ url_for('refresh_cart') }}" method="post">
         <button type="submit" class="btn btn-secondary">Refresh Cart</button>
     </form>
-    <a href="/cart" class="nav-link mx-2 active" style="color: #27334b; font-size: x-large; font-family: 'Times New Roman', Times, serif; letter-spacing: 3px;">
-        <i class="fas fa-shopping-cart"></i> Cart <span id="cart-count" class="badge badge-primary">{{ session.cart|length }}</span>
-    </a>
+
     
     <!-- Display cart items -->
     <div class="book-container">
@@ -168,6 +273,28 @@
             </div>
         </div>
     </div>
+
+    <footer>
+        <div class="footer">
+            
+            <div class="row">
+                <ul>
+                    <li><a href="/books" style="color: #b8cfc8;font-size: x-large;font-family: 'Times New Roman', Times, serif;letter-spacing: 3px;">All Books</a></li>
+                    <li><a href="/fiction" style="color: #b8cfc8;font-size: x-large;font-family: 'Times New Roman', Times, serif;letter-spacing: 3px;">Fiction</a></li>
+                    <li><a href="/nonfiction" style="color: #b8cfc8;font-size: x-large;font-family: 'Times New Roman', Times, serif;letter-spacing: 3px;">Non-fiction</a></li>
+                    <li><a href="/childrens" style="color: #b8cfc8;font-size: x-large;font-family: 'Times New Roman', Times, serif;letter-spacing: 3px;">Children's</a></li>
+                    <li><a href="/contact" style="color: #b8cfc8;font-size: x-large;font-family: 'Times New Roman', Times, serif;letter-spacing: 3px;">Contact Us</a></li>
+                </ul>
+            </div>
+      
+            <div class="row">
+              <ul>
+                  <li><a href="/" style="color: #b8cfc8;font-size: x-large;font-family: 'Times New Roman', Times, serif;letter-spacing: 3px;">EDGAR Copyright © 2024 Edgar's Library - All rights reserved || Designed By: Amir Ashfaque Ahmed Khan</a></li>
+              </ul>
+          </div>
+            
+        </div>
+      </footer>
 
     <script>
         // Get the modal
